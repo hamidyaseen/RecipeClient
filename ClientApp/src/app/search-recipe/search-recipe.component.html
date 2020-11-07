@@ -1,0 +1,21 @@
+<h3>Search recipe</h3>
+<mat-card>
+  <input #recipeInput placeholder="Search recipes" (keydown.enter)="search(recipeInput)">
+</mat-card>
+
+<table *ngIf="markedRecipes" class="full-length-table">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Energy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bRecipe of markedRecipes; index as recipeId">
+
+      <td class=""><img class="icon-image" [src]="bRecipe.recipe.image" /></td>
+      <td class=""><a [title]="bRecipe.recipe.label + ' details'" [routerLink]="['/recipe',recipeId]">{{bRecipe.recipe.label}}</a></td>
+    </tr>
+  </tbody>
+</table>
